@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.edu.ifspcjo.ads.dw2a6.ifitness.model.User;
 import br.edu.ifspcjo.ads.dw2a6.ifitness.repositoriy.UserRepository;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/users")
@@ -31,7 +32,7 @@ public class UserResource {
 	}
 	
 	@PostMapping
-	public User create(@RequestBody User user, HttpServletResponse response) {
+	public User create( @Valid @RequestBody User user, HttpServletResponse response) {
 		return userRepository.save(user);
 	}
 	@GetMapping("/{id}")
